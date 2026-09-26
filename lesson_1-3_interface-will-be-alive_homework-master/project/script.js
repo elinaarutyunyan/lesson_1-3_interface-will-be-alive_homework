@@ -9,6 +9,7 @@ const visibleCount = document.getElementById("visible-count");
 const initialTitle = panelTitle.textContent;
 const initialDescription = panelDescription.textContent;
 const randomButton = document.getElementById("random-button");
+const resetButton = document.getElementById("reset-button");
 
 function selectCard(card) {
   clearSelection();
@@ -79,9 +80,12 @@ function selectRandomCard() {
 
 randomButton.addEventListener("click", selectRandomCard);
 
-// Этап 4. Найдите кнопки фильтров.
-// Показывайте подходящие карточки, обновляйте активную кнопку и счетчик.
-// Учтите случай, когда новый фильтр скрывает выбранную карточку.
+function resetCollection() {
+  applyFilter("all");
+  clearSelection();
+}
+
+resetButton.addEventListener("click", resetCollection);
 
 // Этап 5. Реализуйте случайный выбор среди видимых карточек.
 // Затем реализуйте полный сброс интерфейса.
