@@ -418,7 +418,7 @@ a:focus-visible {
 }
 
 .details-panel--pulse {
-  animation: panel-pulse 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: panel-pulse 650ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .assignment-note {
@@ -475,13 +475,18 @@ a:focus-visible {
 
 @keyframes panel-pulse {
   0% {
-    transform: scale(0.985);
-    filter: brightness(1.18);
+    transform: scale(0.94) rotate(-0.6deg);
+    opacity: 0.6;
+  }
+
+  60% {
+    transform: scale(1.015) rotate(0.3deg);
+    opacity: 1;
   }
 
   100% {
-    transform: scale(1);
-    filter: brightness(1);
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
   }
 }
 
