@@ -8,6 +8,7 @@ const filterButtons = document.querySelectorAll(".filter-button");
 const visibleCount = document.getElementById("visible-count");
 const initialTitle = panelTitle.textContent;
 const initialDescription = panelDescription.textContent;
+const randomButton = document.getElementById("random-button");
 
 function selectCard(card) {
   clearSelection();
@@ -60,6 +61,23 @@ filterButtons.forEach((btn) => {
     applyFilter(btn.dataset.filter);
   });
 });
+
+function selectRandomCard() {
+  const visibleCards = [...cards].filter(
+    (card) => !card.classList.contains("collection-card--hidden")
+  );
+
+  if (visibleCards.length === 0) return;
+
+  const current = document.querySelector(".collection-card--selected");
+  const pool = visibleCards.filter((card) => card !== current);
+  const finalPool = pool.length > 0 ? pool : visibleCards;
+  const index = Math.floor(Math.random() * finalPool.length);
+
+  selectCard(finalPool[index]);
+}
+
+randomButton.addEventListener("click", selectRandomCard);
 
 // Этап 4. Найдите кнопки фильтров.
 // Показывайте подходящие карточки, обновляйте активную кнопку и счетчик.
