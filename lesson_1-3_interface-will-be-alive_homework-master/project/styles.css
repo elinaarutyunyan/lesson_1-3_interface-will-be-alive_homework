@@ -1,12 +1,12 @@
 :root {
-  --ink: #11182d;
-  --ink-soft: #26304b;
+  --ink: #3a1f0d;
+  --ink-soft: #5a3418;
   --paper: #f5f7fb;
   --surface: #ffffff;
-  --line: #cdd4e3;
-  --muted: #66708a;
-  --signal: #b8ff3d;
-  --shadow: 0 18px 55px rgb(17 24 45 / 10%);
+  --line: #e8cf9f;
+  --muted: #8f6d47;
+  --signal: #ffc857;
+  --shadow: 0 18px 55px rgb(58 31 13 / 12%);
   --radius-large: 1.5rem;
   --radius-medium: 1rem;
   color: var(--ink);
@@ -18,7 +18,6 @@
 * {
   box-sizing: border-box;
 }
-
 html {
   scroll-behavior: smooth;
 }
@@ -48,7 +47,7 @@ a {
 
 button:focus-visible,
 a:focus-visible {
-  outline: 0.2rem solid #2176ff;
+  outline: 0.2rem solid var(--ink);
   outline-offset: 0.2rem;
 }
 
@@ -144,7 +143,7 @@ a:focus-visible {
 }
 
 .intro h1 em {
-  color: #475273;
+  color: #ffc857;
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 400;
 }
@@ -323,7 +322,7 @@ a:focus-visible {
   padding: 1.35rem;
   overflow: hidden;
   background:
-    radial-gradient(circle at 100% 0, rgb(184 255 61 / 22%), transparent 35%),
+    radial-gradient(circle at 100% 0, rgb(255 200 87 / 22%), transparent 35%),
     var(--ink);
   color: #ffffff;
 }
@@ -418,7 +417,7 @@ a:focus-visible {
 }
 
 .details-panel--pulse {
-  animation: panel-pulse 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: panel-pulse 650ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .assignment-note {
@@ -475,14 +474,35 @@ a:focus-visible {
 
 @keyframes panel-pulse {
   0% {
-    transform: scale(0.985);
-    filter: brightness(1.18);
+    transform: scale(0.94) rotate(-0.6deg);
+    opacity: 0.6;
+  }
+
+  60% {
+    transform: scale(1.015) rotate(0.3deg);
+    opacity: 1;
   }
 
   100% {
-    transform: scale(1);
-    filter: brightness(1);
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
   }
+}
+  
+.keyboard-hint {
+  margin: 0 0 0.85rem;
+  padding: 0 0.35rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.keyboard-hint kbd {
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--line);
+  border-radius: 0.35rem;
+  background: var(--surface);
+  font: inherit;
+  font-weight: 800;
 }
 
 @media (max-width: 64rem) {
@@ -540,12 +560,6 @@ a:focus-visible {
 
   .details-panel__actions {
     grid-template-columns: 1fr;
-  }
-
-  .assignment-note {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1.5rem;
   }
 }
 
