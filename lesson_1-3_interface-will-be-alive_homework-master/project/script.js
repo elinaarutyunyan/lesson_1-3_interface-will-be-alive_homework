@@ -1,5 +1,30 @@
 "use strict";
 
+const cards = document.querySelectorAll(".collection-card");
+const panel = document.getElementById("details-panel");
+const panelTitle = document.getElementById("details-title");
+const panelDescription = document.getElementById("details-description");
+
+function selectCard(card) {
+  cards.forEach((item) => {
+    item.classList.remove("collection-card--selected");
+    item.setAttribute("aria-pressed", "false");
+  });
+
+  card.classList.add("collection-card--selected");
+  card.setAttribute("aria-pressed", "true");
+
+  panelTitle.textContent = card.dataset.title;
+  panelDescription.textContent = card.dataset.description;
+  panel.classList.add("details-panel--pulse");
+}
+
+cards.forEach((card) => {
+  card.addEventListener("click", () => {
+    selectCard(card);
+  });
+});
+
 // ДЗ 3. Интерактивная коллекция.
 // Выполняйте практические этапы из docs/HOME_WORK.md по порядку.
 // Не пытайтесь написать весь файл за один раз: после каждого этапа проверяйте
