@@ -110,7 +110,9 @@ function moveSelection(direction) {
     index = (index + direction + visible.length) % visible.length;
   }
 
-  selectCard(visible[index]);
+  const target = visible[index];
+  selectCard(target);
+  target.focus();
 }
 
 document.addEventListener("keydown", (event) => {
