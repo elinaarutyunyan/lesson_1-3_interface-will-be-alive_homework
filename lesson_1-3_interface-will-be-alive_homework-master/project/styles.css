@@ -489,6 +489,22 @@ a:focus-visible {
     opacity: 1;
   }
 }
+  
+.keyboard-hint {
+  margin: 0 0 0.85rem;
+  padding: 0 0.35rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.keyboard-hint kbd {
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--line);
+  border-radius: 0.35rem;
+  background: var(--surface);
+  font: inherit;
+  font-weight: 800;
+}
 
 @media (max-width: 64rem) {
   .intro {
@@ -545,12 +561,6 @@ a:focus-visible {
 
   .details-panel__actions {
     grid-template-columns: 1fr;
-  }
-
-  .assignment-note {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1.5rem;
   }
 }
 

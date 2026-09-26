@@ -87,8 +87,40 @@ function resetCollection() {
 
 resetButton.addEventListener("click", resetCollection);
 
-// Этап 5. Реализуйте случайный выбор среди видимых карточек.
-// Затем реализуйте полный сброс интерфейса.
+panel.addEventListener("animationend", () => {
+  panel.classList.remove("details-panel--pulse");
+});
 
-// Этап 6. Запускайте подготовленную CSS-анимацию через класс.
-// Не дублируйте оформление в script.js.
+function getVisibleCards() {
+  return [...cards].filter(
+    (card) => !card.classList.contains("collection-card--hidden")
+  );
+}
+
+function moveSelection(direction) {
+  const visible = getVisibleCards();
+  if (visible.length === 0) return;
+
+  const current = document.querySelector(".collection-card--selected");
+  let index = current ? visible.indexOf(current) : -1;
+
+  if (index === -1) {
+    index = direction > 0 ? 0 : visible.length - 1;
+  } else {
+    index = (index + direction + visible.length) % visible.length;
+  }
+
+  selectCard(visible[index]);
+}
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowRight") {
+    event.preventDefault();
+    moveSelection(1);
+  } else if (event.key === "ArrowLeft") {
+    event.preventDefault();
+    moveSelection(-1);
+  } else if (event.key === "Escape") {
+    resetCollection();
+  }
+});
